@@ -2,26 +2,27 @@ package com.example.HastaneSistemi.model;
 
 import jakarta.persistence.*;
 
-import lombok.Data;
-import lombok.Getter;
+import lombok.*;
 
 import java.util.List;
 
 @Entity
 @DiscriminatorValue("DOCTOR")
 @Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Doctor extends Personel {
     @Getter
     @Column(nullable = false)
     private String speciality;
 
     @ManyToOne
-    @JoinColumn(name="clinic_doktor")
+    @JoinColumn(name="clinic_doktor",nullable = false)
     private Clinic clinic;
 
-    @ManyToOne
-    @JoinColumn(name = "doctor_patient")
-    private Patient patient;
+    @ManyToMany(mappedBy = "doctors")
+    private List<Patient> patients;
     @OneToMany
     @JoinColumn
     List<Prescription> prescriptions;

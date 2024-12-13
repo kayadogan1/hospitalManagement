@@ -1,9 +1,7 @@
 package com.example.HastaneSistemi.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Data
@@ -14,40 +12,18 @@ public class LabResults {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "result_id",nullable = false)
     private Integer ResultId;
+    @Getter
+    @Setter
     private String result;
+    @Getter
+    @Setter
     private String notes;
+    @Getter
+    @Setter
     @OneToOne
     LabTests labTest;
 
-    public int getResultId() {
-        return ResultId;
-    }
+    @OneToOne
+    Patient patient;
 
-    public void setResultId(int resultId) {
-        ResultId = resultId;
-    }
-
-    public String getResult() {
-        return result;
-    }
-
-    public void setResult(String result) {
-        this.result = result;
-    }
-
-    public String getNotes() {
-        return notes;
-    }
-
-    public void setNotes(String notes) {
-        this.notes = notes;
-    }
-
-    public LabTests getLabTest() {
-        return labTest;
-    }
-
-    public void setLabTest(LabTests labTest) {
-        this.labTest = labTest;
-    }
 }

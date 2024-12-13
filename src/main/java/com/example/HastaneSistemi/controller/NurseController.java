@@ -4,12 +4,13 @@ import com.example.HastaneSistemi.model.Nurse;
 import com.example.HastaneSistemi.service.NurseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/nurses")
+@Controller
+@RequestMapping("/api/nurses")
 public class NurseController {
 
     @Autowired
@@ -30,8 +31,13 @@ public class NurseController {
 
     @PostMapping
     public ResponseEntity<Nurse> createNurse(@RequestBody Nurse nurse) {
-        Nurse createdNurse = nurseService.createNurse(nurse);
-        return ResponseEntity.ok(createdNurse);
+
+        try {
+            Nurse createdNurse = nurseService.createNurse(nurse);
+            return ResponseEntity.ok(createdNurse);
+        }catch (Exception e){
+            return ResponseEntity.badRequest().build();
+        }
     }
 
     @PutMapping("/{id}")

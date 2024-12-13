@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hemşire Listesi</title>
+</head>
+<body>
+<h1>Hemşire Listesi</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Adı</th>
+        <th>Soyadı</th>
+        <th>Kimlik No</th>
+        <th>Adres</th>
+        <th>Unvan</th>
+        <th>İşlemler</th>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="nurse : ${nurses}">
+        <tr>
+            <td th:text="${nurse.name}"></td>
+            <td th:text="${nurse.surname}"></td>
+            <td th:text="${nurse.identityNo}"></td>
+            <td th:text="${nurse.address}"></td>
+            <td th:text="${nurse.title}"></td>
+            <td>
+                <a th:href="@{/nurses/add/{id}(id=${nurse.id})}">Düzenle</a>
+                <a th:href="@{/nurses/delete/{id}(id=${nurse.id})}" onclick="return confirm('Silmek istediğinizden emin misiniz?')">Sil</a>
+            </td>
+        </tr>
+    </th:block>
+    </tbody>
+</table>
+
+<a href="/nurses/add">Yeni Hemşire Ekle</a>
+</body>
+</html>

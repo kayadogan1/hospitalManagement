@@ -4,11 +4,13 @@ import com.example.HastaneSistemi.model.HospitalRooms;
 import com.example.HastaneSistemi.service.HospitalRoomsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
-@RestController
+@Controller
 @RequestMapping("/api/hospitalRooms") // HospitalRooms için endpoint
 public class HospitalRoomsController {
 
@@ -28,7 +30,9 @@ public class HospitalRoomsController {
     // ID'ye göre oda getir
     @GetMapping("/{id}")
     public ResponseEntity<HospitalRooms> getRoomById(@PathVariable int id) {
-        return ResponseEntity.ok(hospitalRoomsService.getRoomById(id));
+
+        Optional<HospitalRooms> optionalRoom = hospitalRoomsService.getRoomById(id);
+        return optionalRoom .map(ResponseEntity::ok) .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     // Yeni oda ekle

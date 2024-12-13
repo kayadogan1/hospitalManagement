@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Doctors List</title>
+</head>
+<body>
+<h1>Doctors</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Speciality</th>
+        <th>Clinic</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="doctor : ${doctors}">
+        <td th:text="${doctor.name}">Doctor Name</td>
+        <td th:text="${doctor.speciality}">Speciality</td>
+        <td th:text="${doctor.clinic != null ? doctor.clinic.clinicName : 'No Clinic Assigned'}">Clinic Name</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

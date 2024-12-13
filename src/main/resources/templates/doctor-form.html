@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Doctor</title>
+</head>
+<body>
+<h1>Add New Doctor</h1>
+<form th:action="@{/doctors}" th:object="${doctor}" method="post">
+    <label for="name">Doctor Name:</label>
+    <input type="text" th:field="*{name}" id="name" required />
+    <br/>
+    <label for="surname">Doctor Surname:</label>
+    <input type="text" th:field="*{surname}" id="surname" required />
+    <br/>
+    <label for="identityNo">Identity Number:</label>
+    <input type="text" th:field="*{identityNo}" id="identityNo" required />
+    <br/>
+    <label for="title">Title:</label>
+    <select th:field="*{title}" id="title" required>
+        <option value="" disabled selected>Select a title</option>
+        <option value="Dr.">Dr.</option>
+        <option value="Prof.">Prof.</option>
+        <option value="Assoc. Prof.">Assoc. Prof.</option>
+        <option value="Specialist">Specialist</option>
+    </select>
+    <br/>
+
+
+    <label for="speciality">Speciality:</label>
+    <input type="text" th:field="*{speciality}" id="speciality" required />
+    <br/>
+
+    <label for="clinic">Clinic:</label>
+    <select name="clinicId" id="clinic" required>
+        <option value="" disabled selected>Select Clinic</option>
+        <option th:each="clinic : ${clinics}"
+                th:value="${clinic.id}"
+                th:text="${clinic.clinicName}"></option>
+    </select>
+    <br/>
+
+    <button type="submit">Add Doctor</button>
+</form>
+</body>
+</html>

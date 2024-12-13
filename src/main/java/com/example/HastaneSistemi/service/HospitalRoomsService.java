@@ -24,9 +24,8 @@ public class HospitalRoomsService {
     }
 
     // ID'ye göre oda getir
-    public HospitalRooms getRoomById(int id) {
-        Optional<HospitalRooms> room = hospitalRoomsRepository.findById(id);
-        return room.orElseThrow(() -> new RuntimeException("Hospital room not found with id: " + id));
+    public Optional<HospitalRooms> getRoomById(int id) {
+        return hospitalRoomsRepository.findById(id);
     }
 
     // Yeni oda ekle
@@ -36,7 +35,7 @@ public class HospitalRoomsService {
 
     // Oda bilgilerini güncelle
     public HospitalRooms updateRoom(int id, HospitalRooms updatedRoom) {
-        HospitalRooms existingRoom = getRoomById(id);
+        HospitalRooms existingRoom = getRoomById(id).orElse(null);
         existingRoom.setRoomNumber(updatedRoom.getRoomNumber());
         existingRoom.setBedCount(updatedRoom.getBedCount());
         existingRoom.setBeds(updatedRoom.getBeds());

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Patients List</title>
+</head>
+<body>
+<h1>Patients List</h1>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Gender</th>
+        <th>Doctors</th>
+        <th>Visitors</th>
+        <th>Appointments</th>
+        <th>Invoice</th>
+        <th>Prescription</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="patient : ${patients}">
+        <td th:text="${patient.id}"></td>
+        <td th:text="${patient.firstName}"></td>
+        <td th:text="${patient.lastName}"></td>
+        <td th:text="${patient.gender}"></td>
+        <!-- List Doctors -->
+        <td>
+            <ul>
+                <li th:each="doctor : ${patient.doctors}"
+                    th:text="${doctor.name + ' ' + doctor.surname}"></li>
+            </ul>
+        </td>
+        <!-- List Visitors -->
+        <td>
+            <ul>
+                <li th:each="visitor : ${patient.visitors}"
+                    th:text="${visitor.name + ' ' + visitor.surname}"></li>
+            </ul>
+        </td>
+        <!-- List Appointments -->
+        <td>
+            <ul>
+                <li th:each="appointment : ${patient.appointments}"
+                    th:text="${appointment.details}"></li>
+            </ul>
+        </td>
+        <!-- Invoice -->
+        <td th:text="${patient.invoice != null ? patient.invoice.details : 'No Invoice'}"></td>
+        <!-- Prescription -->
+        <td th:text="${patient.prescription != null ? patient.prescription.details : 'No Prescription'}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hemşire Ekle</title>
+</head>
+<body>
+<h1>Yeni Hemşire Ekle</h1>
+
+<form th:action="@{/nurses}" th:object="${nurse}" method="post">
+    <!-- Hemşire Bilgileri -->
+    <div>
+        <label for="name">Adı:</label>
+        <input type="text" id="name" th:field="*{name}" placeholder="Adı" required />
+    </div>
+
+    <div>
+        <label for="surname">Soyadı:</label>
+        <input type="text" id="surname" th:field="*{surname}" placeholder="Soyadı" required />
+    </div>
+
+    <div>
+        <label for="identityNo">Kimlik No:</label>
+        <input type="text" id="identityNo" th:field="*{identityNo}" placeholder="Kimlik Numarası" required />
+    </div>
+
+    <div>
+        <label for="address">Adres:</label>
+        <input type="text" id="address" th:field="*{address}" placeholder="Adres" />
+    </div>
+
+    <div>
+        <label for="title">Unvan:</label>
+        <input type="text" id="title" th:field="*{title}" placeholder="Unvan" required />
+    </div>
+
+
+    <!-- Klinik Seçimi -->
+    <div>
+        <label for="clinic">Klinik:</label>
+        <select id="clinic" th:field="*{clinic.id}" required>
+            <option value="" disabled selected>Klinik Seçin</option>
+            <th:block th:each="clinic : ${clinics}">
+                <option th:value="${clinic.id}" th:text="${clinic.clinicName}"></option>
+            </th:block>
+        </select>
+    </div>
+
+    <!-- Kaydet Butonu -->
+    <div>
+        <button type="submit">Kaydet</button>
+    </div>
+</form>
+
+<a href="/nurses">Geri dön</a>
+</body>
+</html>

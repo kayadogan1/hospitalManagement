@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lab Results</title>
+</head>
+<body>
+<h1>Lab Results</h1>
+<a href="/lab-results/add">Add Lab Result</a>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Result</th>
+        <th>Notes</th>
+        <th>Lab Test</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="labResult : ${labResults}">
+        <td th:text="${labResult.resultId}"></td>
+        <td th:text="${labResult.result}"></td>
+        <td th:text="${labResult.notes}"></td>
+        <td th:text="${labResult.labTest.test_name}"></td>
+        <td>
+            <form th:action="@{/lab-results}" method="post">
+                <input type="hidden" th:value="${labResult.resultId}" name="id" />
+                <input type="hidden" name="_method" value="delete" />
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

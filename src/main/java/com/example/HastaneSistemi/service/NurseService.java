@@ -1,6 +1,7 @@
 package com.example.HastaneSistemi.service;
 
 import com.example.HastaneSistemi.model.Nurse;
+import com.example.HastaneSistemi.repository.ClinicRepository;
 import com.example.HastaneSistemi.repository.NurseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,8 @@ import java.util.Optional;
 public class NurseService {
     @Autowired
     private NurseRepository nurseRepository;
+    @Autowired
+    private ClinicRepository clinicRepository;
 
     public List<Nurse> getAllNurses() {
         return nurseRepository.findAll();

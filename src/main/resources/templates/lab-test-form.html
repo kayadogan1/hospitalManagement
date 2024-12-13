@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Lab Test</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+        input, select, textarea, button {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+<h1>Add New Lab Test</h1>
+<form th:action="@{/lab-tests}" th:object="${labTest}" method="post">
+    <!-- Test Name -->
+    <label for="testName">Test Name:</label>
+    <input type="text" th:field="*{test_name}" id="testName" required placeholder="Enter test name" />
+
+    <!-- Test Description -->
+    <label for="description">Description:</label>
+    <textarea th:field="*{test_description}" id="description" required placeholder="Enter test description"></textarea>
+
+
+    <!-- Add Button -->
+    <button type="submit">Add Lab Test</button>
+</form>
+</body>
+</html>

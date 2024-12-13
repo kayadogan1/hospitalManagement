@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Room</title>
+</head>
+<body>
+<h1>Add New Room</h1>
+<form th:action="@{/api/rooms}" th:object="${room}" method="post">
+    <input type="number" th:field="*{roomNumber}" required />
+    <input type="number" th:field="*{bedCount}" required />
+    <button type="submit">Save</button>
+</form>
+<a href="/api/rooms">Back to Room List</a>
+</body>
+</html>

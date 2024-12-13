@@ -17,6 +17,11 @@ public class DoctorService {
     public Doctor saveDoctor(Doctor doctor) {
         return doctorRepository.save(doctor);
     }
+    public List<Doctor> saveDoctors(List<Doctor> doctors) {
+
+        return doctorRepository.saveAll(doctors);
+
+    }
     public List<Doctor> getAllDoctor() {
         return doctorRepository.findAll();
     }
@@ -29,5 +34,6 @@ public class DoctorService {
     public void deleteDoctorById(int id) {
         doctorRepository.deleteById(id);
     }
+
 
 }

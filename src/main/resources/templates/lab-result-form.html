@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Lab Result</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+        input, select, textarea, button {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+<h1>Add Lab Result</h1>
+<form th:action="@{/lab-results}" th:object="${labResult}" method="post">
+    <!-- Patient ID -->
+    <label for="patientId">Patient ID:</label>
+    <input type="number" th:field="*{}" id="patientId" required placeholder="Enter patient ID" />
+
+    <!-- Test ID -->
+    <label for="testId">Test ID:</label>
+    <select th:field="*{testId}" id="testId" required>
+        <option value="" disabled selected>Select Test</option>
+        <option th:each="test : ${tests}"
+                th:value="${test.id}"
+                th:text="${test.testName}"></option>
+    </select>
+
+    <!-- Result Value -->
+    <label for="resultValue">Result Value:</label>
+    <input type="text" th:field="*{resultValue}" id="resultValue" required placeholder="Enter result value" />
+
+    <!-- Comments -->
+    <label for="comments">Comments:</label>
+    <textarea th:field="*{comments}" id="comments" placeholder="Enter any comments or observations"></textarea>
+
+    <!-- Submit Button -->
+    <button type="submit">Add Lab Result</button>
+</form>
+</body>
+</html>

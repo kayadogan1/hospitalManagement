@@ -1,10 +1,7 @@
 package com.example.HastaneSistemi.model;
-
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.util.List;
-
 
 @Getter
 @Entity
@@ -24,11 +21,19 @@ public class Patient {
     @Setter
     private String gender;
 
+    @ManyToMany
+    @JoinTable(
+            name = "doctor_patient", // Ortak tablo adı
+            joinColumns = @JoinColumn(name = "doctor_id"), // Doctor tarafındaki sütun
+            inverseJoinColumns = @JoinColumn(name = "patient_id") // Patient tarafındaki sütun
+    )
+    private List<Doctor> doctors;
+
     @Setter
     @OneToMany(mappedBy = "patient")
     private List<Visitor> visitors;
     @Setter
-    @OneToMany(mappedBy = "patient")
+    @OneToMany
     private List<Appointment> appointments;
     @Setter
     @OneToOne
@@ -36,6 +41,9 @@ public class Patient {
     @Setter
     @OneToOne
     Prescription prescription;
+    @OneToOne
+    LabResults labResult;
+
 
 
 }

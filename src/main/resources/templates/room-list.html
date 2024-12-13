@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rooms</title>
+</head>
+<body>
+<h1>Hospital Rooms</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Room Number</th>
+        <th>Bed Count</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="room : ${rooms}">
+        <td th:text="${room.roomNumber}"></td>
+        <td th:text="${room.bedCount}"></td>
+        <td>
+            <a th:href="@{/api/rooms/{id}(id=${room.roomId})}">Details</a> |
+            <a th:href="@{/api/rooms/edit/{id}(id=${room.roomId})}">Edit</a> |
+            <a th:href="@{/api/rooms/delete/{id}(id=${room.roomId})}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a href="/api/rooms/new">Add New Room</a>
+</body>
+</html>

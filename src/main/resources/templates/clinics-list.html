@@ -1,0 +1,24 @@
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Klinik Adı</th>
+        <th>Klinik Adresi</th>
+        <th>İşlemler</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="clinic : ${clinics}">
+        <td th:text="${clinic.id}"></td>
+        <td th:text="${clinic.clinicName}"></td>
+        <td th:text="${clinic.clinicAddress}"></td>
+        <td>
+            <!-- Silme Butonu -->
+            <form th:action="@{/clinics/delete/{id}(id=${clinic.id})}" method="post" style="display:inline;">
+                <input type="hidden" name="_method" value="delete">
+                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Bu kliniği silmek istediğinizden emin misiniz?');">Sil</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
