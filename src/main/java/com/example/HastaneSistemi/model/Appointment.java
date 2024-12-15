@@ -3,6 +3,9 @@ package com.example.HastaneSistemi.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @Setter
 @Getter
 @Entity
@@ -16,8 +19,8 @@ public class Appointment {
     private Integer appointmentId;
     private String appointmentTitle;
     private String appointmentDescription;
-    private String appointmentDate;
-    private String appointmentTime;
+    private LocalDate appointmentDate;
+    private LocalDateTime appointmentTime;
     @ManyToOne
     @JoinColumn
     private Doctor doctor;

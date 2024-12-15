@@ -20,43 +20,5 @@ public class Invoice {//fatura
     @OneToOne
     Patient patient;
 
-    public int getInvoice_id() {
-        return invoice_id;
-    }
 
-    public void setInvoice_id(int invoice_id) {
-        this.invoice_id = invoice_id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
-
-    public Patient getPatient() {
-        return patient;
-    }
-
-    public void setPatient(Patient patient) {
-        this.patient = patient;
-    }
 }

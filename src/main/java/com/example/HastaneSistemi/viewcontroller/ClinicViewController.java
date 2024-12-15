@@ -1,7 +1,5 @@
 package com.example.HastaneSistemi.viewcontroller;
-
 import com.example.HastaneSistemi.model.Clinic;
-import com.example.HastaneSistemi.model.Nurse;
 import com.example.HastaneSistemi.service.ClinicService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +18,7 @@ public class ClinicViewController {
     public String listClinics(Model model) {
         List<Clinic> clinics= clinicService.getAllClinics();
         model.addAttribute("clinics", clinics);
-        return "clinics-list";// burada render yapıyoruz
+        return "clinics-list";
     }
     @GetMapping("/register")
     public String showClinicForm(Model model) {

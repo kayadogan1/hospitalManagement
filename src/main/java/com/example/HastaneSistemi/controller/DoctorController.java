@@ -6,7 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.print.Doc;
 import java.util.List;
 
 @RestController
@@ -19,7 +18,11 @@ public class DoctorController {
     public DoctorController(DoctorService doctorService) {
         this.doctorService = doctorService;
     }
-
+    @PostMapping("/{doctorId}/assign-patient/{patientId}")
+    public ResponseEntity<String> assignPatientToDoctor(@PathVariable Integer doctorId, @PathVariable Integer patientId){
+        doctorService.assignPatient(doctorId, patientId);
+        return ResponseEntity.status(HttpStatus.CREATED).body("Patient assigned to Doctor  successfully");
+    }
     // Yeni doktor ekleme
     @PostMapping
     public ResponseEntity<Doctor> addDoctor(@RequestBody Doctor doctor) {
