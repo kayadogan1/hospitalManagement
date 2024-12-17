@@ -17,6 +17,7 @@ public class Appointment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer appointmentId;
+    private String status;
     private String appointmentTitle;
     private String appointmentDescription;
     private LocalDate appointmentDate;

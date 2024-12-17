@@ -24,8 +24,8 @@ public class Patient {
     @ManyToMany
     @JoinTable(
             name = "doctor_patient", // Ortak tablo adı
-            joinColumns = @JoinColumn(name = "doctor_id"), // Doctor tarafındaki sütun
-            inverseJoinColumns = @JoinColumn(name = "patient_id") // Patient tarafındaki sütun
+            joinColumns = @JoinColumn(name = "patient_id"), // Doctor tarafındaki sütun
+            inverseJoinColumns = @JoinColumn(name = "doctor_id") // Doctor tarafındaki sütun
     )
     private List<Doctor> doctors;
 

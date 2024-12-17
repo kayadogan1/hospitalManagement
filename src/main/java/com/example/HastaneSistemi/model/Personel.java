@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE) // Veya JOINED/TABLE_PER_CLASS
+@Inheritance(strategy = InheritanceType.JOINED) // Veya JOINED/TABLE_PER_CLASS
 @DiscriminatorColumn(name = "personel_type", discriminatorType = DiscriminatorType.STRING)
 @Data
 @NoArgsConstructor

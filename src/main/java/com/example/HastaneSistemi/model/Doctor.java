@@ -1,5 +1,6 @@
 package com.example.HastaneSistemi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import lombok.*;
@@ -22,9 +23,11 @@ public class Doctor extends Personel {
     private Clinic clinic;
 
     @ManyToMany(mappedBy = "doctors")
+    @JsonIgnore
     private List<Patient> patients;
     @OneToMany
     @JoinColumn
+    @JsonIgnore
     List<Prescription> prescriptions;
 
 }
