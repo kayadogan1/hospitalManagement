@@ -1,4 +1,5 @@
 package com.example.HastaneSistemi.model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.List;
@@ -23,25 +24,30 @@ public class Patient {
 
     @ManyToMany
     @JoinTable(
-            name = "doctor_patient", // Ortak tablo adı
-            joinColumns = @JoinColumn(name = "patient_id"), // Doctor tarafındaki sütun
-            inverseJoinColumns = @JoinColumn(name = "doctor_id") // Doctor tarafındaki sütun
+            name = "doctor_patient",
+            joinColumns = @JoinColumn(name = "patient_id"),
+            inverseJoinColumns = @JoinColumn(name = "doctor_id")
     )
     private List<Doctor> doctors;
 
     @Setter
     @OneToMany(mappedBy = "patient")
+    @JsonIgnore
     private List<Visitor> visitors;
     @Setter
     @OneToMany
+    @JsonIgnore
     private List<Appointment> appointments;
     @Setter
     @OneToOne
+    @JsonIgnore
     Invoice invoice;
     @Setter
     @OneToOne
+    @JsonIgnore
     Prescription prescription;
     @OneToOne
+    @JsonIgnore
     LabResults labResult;
 
 

@@ -39,7 +39,6 @@ public class HospitalRoomsService {
         existingRoom.setRoomNumber(updatedRoom.getRoomNumber());
         existingRoom.setBedCount(updatedRoom.getBedCount());
         existingRoom.setBeds(updatedRoom.getBeds());
-        existingRoom.setClinic(updatedRoom.getClinic());
         return hospitalRoomsRepository.save(existingRoom);
     }
 

@@ -29,7 +29,7 @@ public class AppointmentController {
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
-    @PutMapping("/id")
+    @PostMapping("/id")
     public ResponseEntity<Appointment> updateAppointment(@PathVariable Integer id,@RequestBody Appointment updatedAppointment) {
         return ResponseEntity.ok(appointmentService.updateAppointment(id, updatedAppointment));
     }

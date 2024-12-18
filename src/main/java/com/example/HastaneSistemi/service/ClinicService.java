@@ -27,11 +27,11 @@ public class ClinicService {
     }
     public void initializeClinics() {
         List<Clinic> clinics = Arrays.asList(
-                new Clinic(null, "Kardiyoloji Kliniği", "Ana Hastane Binası 1. Kat", null, null, null, null),
-                new Clinic(null, "Nöroloji Kliniği", "Ana Hastane Binası 2. Kat", null, null, null, null),
-                new Clinic(null, "Pediatri Kliniği", "Çocuk Hastanesi Binası", null, null, null, null),
-                new Clinic(null, "Onkoloji Kliniği", "Yan Bina 3. Kat", null, null, null, null),
-                new Clinic(null, "Acil Servis Kliniği", "Giriş Katı", null, null, null, null)
+                new Clinic(null, "Kardiyoloji Kliniği", "Ana Hastane Binası 1. Kat", null, null),
+                new Clinic(null, "Nöroloji Kliniği", "Ana Hastane Binası 2. Kat", null, null),
+                new Clinic(null, "Pediatri Kliniği", "Çocuk Hastanesi Binası", null, null),
+                new Clinic(null, "Onkoloji Kliniği", "Yan Bina 3. Kat", null, null),
+                new Clinic(null, "Acil Servis Kliniği", "Giriş Katı", null, null)
         );
 
         clinicRepository.saveAll(clinics);

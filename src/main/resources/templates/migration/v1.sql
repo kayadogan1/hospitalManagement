@@ -1,9 +1,9 @@
-CREATE OR REPLACE FUNCTION add_patient(
+CREATE OR REPLACE PROCEDURE add_patient(
     p_first_name VARCHAR,
     p_last_name VARCHAR,
     p_gender    VARCHAR
 )
-    RETURNS VOID AS
+ AS
 $$
 BEGIN
     INSERT INTO patient (first_name,gender ,last_name)

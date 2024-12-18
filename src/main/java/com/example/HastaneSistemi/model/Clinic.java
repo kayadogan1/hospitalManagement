@@ -20,10 +20,7 @@ public class Clinic {
     private String clinicAddress;
     @OneToMany
     private List<Doctor> doctors;
-    @OneToMany
-    List<Beds> beds;
-    @OneToMany
-    List<HospitalRooms> rooms;
+
     @OneToMany
     List<Nurse> nurses;
 

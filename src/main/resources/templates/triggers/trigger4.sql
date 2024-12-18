@@ -1,4 +1,4 @@
-CREATE TRIGGER after_room_assignment_insert
-AFTER INSERT ON hospital_rooms
+CREATE TRIGGER appointmen_add_log_trigger
+AFTER INSERT ON appointment
 FOR EACH ROW
-EXECUTE FUNCTION check_room_capacity();
+EXECUTE FUNCTION log_appointment_add();

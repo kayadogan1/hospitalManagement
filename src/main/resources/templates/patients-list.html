@@ -48,7 +48,9 @@
             </ul>
         </td>
         <!-- Invoice -->
-        <td th:text="${patient.invoice != null ? patient.invoice.details : 'No Invoice'}"></td>
+        <td>
+            <span th:text="${patient.invoice != null ? 'Title: ' + patient.invoice.title + ', Description: ' + patient.invoice.description + ', Amount: ' + patient.invoice.amount : 'No Invoice'}"></span>
+        </td>
         <!-- Prescription -->
         <td th:text="${patient.prescription != null ? patient.prescription.details : 'No Prescription'}"></td>
     </tr>

@@ -1,10 +1,10 @@
 package com.example.HastaneSistemi.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Setter
-@Getter
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -16,6 +16,8 @@ public class Beds {
     private boolean status;
     private String roomName;
     @ManyToOne
-    HospitalRooms room;
+    @JoinColumn(name = "room_id")
+    @JsonBackReference
+    private HospitalRooms room;
 
 }

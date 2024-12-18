@@ -1,6 +1,7 @@
 package com.example.HastaneSistemi.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import lombok.*;
@@ -13,6 +14,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties({"clinic","clinic_beds","clinic_nurses","doctor_patient","clinic_rooms"})
 public class Doctor extends Personel {
     @Getter
     @Column(nullable = false)

@@ -1,5 +1,6 @@
 package com.example.HastaneSistemi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -27,6 +28,7 @@ public class Appointment {
     private Doctor doctor;
     @ManyToOne
     @JoinColumn
+    @JsonIgnore
     private Patient patient;
 
 }
