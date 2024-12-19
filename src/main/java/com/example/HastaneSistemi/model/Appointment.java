@@ -7,11 +7,13 @@ import lombok.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-@Setter
-@Getter
-@Entity
+
+@Entity(name = "Appointment")
+@Table(name = "appointment")
 @Data
 @NoArgsConstructor
+@Getter
+@Setter
 @AllArgsConstructor
 public class Appointment {
 

@@ -88,7 +88,7 @@
         <select id="appointments" th:field="*{appointments}" multiple>
             <option th:each="appointment : ${appointments}"
                     th:value="${appointment.id}"
-                    th:text="${appointment.details}"></option>
+                    ></option>
         </select>
         <small>Hold down Ctrl (Cmd on Mac) to select multiple appointments.</small>
     </div>
